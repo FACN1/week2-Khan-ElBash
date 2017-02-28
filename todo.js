@@ -12,7 +12,6 @@ var todo = (function() {
   //   description: /*the description of the todo item*/,
   //   done: /*true or false, indicates whether the todo is done*/
   // }
-}
 
   var todoFunctions = {
     generateId: (function() {
@@ -99,7 +98,7 @@ var todo = (function() {
     var description = "?" // event.target ....
 
     state = state // change this!! you should use todoFunctions.addTodo
-    controller.render();
+    controller.render(state);
   })
 
 
