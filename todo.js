@@ -26,7 +26,7 @@ var todo = (function() {
         newTodoCopy[key]=newTodo[key];
       });
       newTodoCopy.id = todoFunctions.generateId();
-      return todos.concat(newTodoCopy) 
+      return todos.concat(newTodoCopy)
       //return arr;
       // should leave the input argument todos unchanged
       // return a new array, it should contain todos with the newTodo added to the end.
@@ -41,13 +41,6 @@ var todo = (function() {
         return todo.id !== idToDelete;
       }
       return todos.filter(idIsNotEqual);
-      // var output = [];
-      // for (var i = 0; i < todos.length; i++){
-      //   if (todos[i].id !== idToDelete){
-      //     output.push(todos[i])
-      //   }
-      // }
-      // return output; //change me!
     },
     markTodo: function(todos, idToMark) {
 
