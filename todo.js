@@ -105,4 +105,5 @@ var todo = (function() {
 
   controller.render(state);
 
+  return { todoFunctions }
 })();
