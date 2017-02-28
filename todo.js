@@ -51,19 +51,19 @@ var todo = (function() {
             map1.push(todo);
             return todos;
               }
-         else {
-           if (todo.done == false){
-                todo.done = true;
-                map1.push(todo);
-                return todos;
+               else {
+                 if (todo.done == false){
+                  todo.done = true;
+                  map1.push(todo);
+                  return todos;
+              }
              }
             }
-           }
-           map1.push(todo);
-           return todos;
-         })
-         console.log(todos);
-         return map1;
+             map1.push(todo);
+             return todos;
+          })
+          console.log(todos);
+          return map1;
       // should leave the input argument todos unchanged
       // in the new todo list, all elements will remain unchanged except the on with id: idToMark
       // this element will have its id toggled
