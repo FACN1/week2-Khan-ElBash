@@ -7,9 +7,18 @@
   <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.1.1.css">
 </head>
 <body>
+  <div id = "todo-container">
+      <ul>
+      </ul>
+  </div>
+  <form id="add-todo">
+    <input type="text" name="description" value="">
+    <input type="submit" name="" value="Submit">
+  </form>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
-  <div id="add-todo"></div>
+
+
   <script src="https://code.jquery.com/qunit/qunit-2.1.1.js"></script>
   <script src="../todo.js"></script>
   <script src="./test.js"></script>

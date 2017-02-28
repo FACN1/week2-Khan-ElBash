@@ -21,7 +21,9 @@ var todo = (function() {
       }
     })(),
     addTodo: function (todos, newTodo) {
-        return [{ description: 'td1' }, { description: 'td2', id:0 }];
+      newTodo.id = todoFunctions.generateId();
+      var arr = todos.concat(newTodo);
+      return arr;
       // should leave the input argument todos unchanged
       // return a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
