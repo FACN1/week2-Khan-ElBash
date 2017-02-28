@@ -30,7 +30,17 @@ var todo = (function() {
       // should leave the input argument todos unchanged
       // return a new array, this should not contain any todo with an id of idToDelete
       // hint: array.filter
-      return state; //change me!
+      function idIsNotEqual(todo){
+        return todo.id !== idToDelete;
+      }
+      return todos.filter(idIsNotEqual);
+      // var output = [];
+      // for (var i = 0; i < todos.length; i++){
+      //   if (todos[i].id !== idToDelete){
+      //     output.push(todos[i])
+      //   }
+      // }
+      // return output; //change me!
     },
     markTodo: function(todos, idToMark) {
       // should leave the input argument todos unchanged
