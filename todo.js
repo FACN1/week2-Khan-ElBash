@@ -26,7 +26,7 @@ var todo = (function() {
         newTodoCopy[key]=newTodo[key];
       });
       newTodoCopy.id = todoFunctions.generateId();
-      return todos.concat(newTodoCopy) 
+      return todos.concat(newTodoCopy)
       //return arr;
       // should leave the input argument todos unchanged
       // return a new array, it should contain todos with the newTodo added to the end.
@@ -40,7 +40,27 @@ var todo = (function() {
       return state; //change me!
     },
     markTodo: function(todos, idToMark) {
-
+      var map1 = [];
+      todos.map(function(todo){
+        if(todo.id == idToMark){
+          if(todo.done == true) {
+            todo.done = false;
+            map1.push(todo);
+            return todos;
+              }
+         else {
+           if (todo.done == false){
+                todo.done = true;
+                map1.push(todo);
+                return todos;
+             }
+            }
+           }
+           map1.push(todo);
+           return todos;
+         })
+         console.log(todos);
+         return map1;
       // should leave the input argument todos unchanged
       // in the new todo list, all elements will remain unchanged except the on with id: idToMark
       // this element will have its id toggled

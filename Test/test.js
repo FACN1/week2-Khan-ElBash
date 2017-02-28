@@ -16,3 +16,34 @@ QUnit.test("addTodo", function(assert){
    assert.notEqual(todos[0].id, todos[1].id,"ids should be different");
 
 })
+
+QUnit.test("markTodo", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false}];
+  var idToMark = 0;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:true}],
+  "true succsses"
+)
+})
+
+QUnit.test("markTodoTest2", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false},{id:1, description:'td2', done:true},{id:2, description:'td3', done:false} ];
+  var idToMark = 1;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:false},
+  {id:1, description:'td2', done:false},
+  {id:2, description:'td3', done:false} ],
+  "true succsses"
+)
+})
+
+QUnit.test("markTodoTest3", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false},{id:1, description:'td2', done:true},{id:2, description:'td3', done:false} ];
+  var idToMark = 2;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:false},
+  {id:1, description:'td2', done:true},
+  {id:2, description:'td3', done:true} ],
+  "true succsses"
+)
+})
