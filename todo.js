@@ -22,8 +22,8 @@ var todo = (function() {
     })(),
     addTodo: function (todos, newTodo) {
       newTodo.id = todoFunctions.generateId();
-      var arr = todos.concat(newTodo);
-      return arr;
+        arr = todos.concat(newTodo);
+        return arr;
       // should leave the input argument todos unchanged
       // return a new array, it should contain todos with the newTodo added to the end.
       // add an id to the newTodo. You can use the generateId function to create an id.
@@ -36,6 +36,12 @@ var todo = (function() {
       return state; //change me!
     },
     markTodo: function(todos, idToMark) {
+       var newArr = todos.map(function(obj){
+         if (obj.id ==idToMark){
+           obj.done = true;
+         }
+       });;
+       return todos;
       // should leave the input argument todos unchanged
       // in the new todo list, all elements will remain unchanged except the on with id: idToMark
       // this element will have its id toggled
