@@ -69,7 +69,7 @@ var todo = (function() {
   var controller = {
     createTodoNode: function(todoData) {
       var todoNode = document.createElement('li');
-      
+
       // add span holding description
       var descriptionNode = document.createElement('span');
       descriptionNode.innerHTML = todoData.description;
@@ -99,22 +99,38 @@ var todo = (function() {
       });
 
       // you may want to add a class for css
-      console.log(todoListWrapper.firstChild);
+      // console.log(todoListWrapper.firstChild);
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
 
+  var clickHeader = document.getElementById('click-header');
+  clickHeader.addEventListener('click', function(event) {
+    clickHeader.textContent = "changed";
+  })
+
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
+    console.log('submit!!!');
     // https://developer.mozilla.org/en-US/docs/Web/Events/submit
     // what does event.preventDefault do?
-    // what is inside event.target?
-    console.log('click');
+    // it stops the page from refreshing
+    event.preventDefault();
+    // what is inside event.target? the form
 
-    var description = "?" // event.target ....
+    // get the text from the input box and put it in inputDescription variable
+    var inputDescription = event.target.description.value; // event.target ....
 
-    state = state // change this!! you should use todoFunctions.addTodo
+    // we need to create a newTodo item with the correct structure
+    var newTodo = {
+      description: inputDescription
+    };
+
+    // we want to add a new todo item to the state
+    // you should use todoFunctions.addTodo
+    state = todoFunctions.addTodo(state, newTodo);
+
     controller.render(state);
   })
 
