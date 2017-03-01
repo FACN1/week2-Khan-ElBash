@@ -114,16 +114,10 @@ var todo = (function() {
       });
 
       // you may want to add a class for css
-      // console.log(todoListWrapper.firstChild);
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
-
-  var clickHeader = document.getElementById('click-header');
-  clickHeader.addEventListener('click', function(event) {
-    clickHeader.textContent = "changed";
-  })
-
+  
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
