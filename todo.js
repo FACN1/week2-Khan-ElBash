@@ -69,9 +69,13 @@ var todo = (function() {
   var controller = {
     createTodoNode: function(todoData) {
       var todoNode = document.createElement('li');
-      // you will need to use addEventListener
-
+      
       // add span holding description
+      var descriptionNode = document.createElement('span');
+      descriptionNode.innerHTML = todoData.description;
+
+      // we want to add the descriptionNode to the todoNode
+      todoNode.appendChild(descriptionNode);
 
       // this adds the delete button
       var deleteButtonNode = document.createElement('button');
