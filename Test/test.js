@@ -60,3 +60,48 @@ QUnit.test( "test deleteTodo function deleting one todo item", function( assert 
     "Function should delete only todo item with id=1"
   );
 });
+
+// markTodo tests
+
+QUnit.test("markTodo", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false}];
+  var idToMark = 0;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:true}],
+  "changed the done to true"
+)
+});
+
+QUnit.test("test markTodo when it should do nothing", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false}];
+  var idToMark = 1;
+  var expectedOutput = [{id:0, description:'td1', done:false}];
+  assert.deepEqual(
+    markTodo(todos, idToMark),
+    expectedOutput,
+    "when idToMark is not in array of todos, should return same array"
+  );
+});
+
+QUnit.test("markTodoTest2", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false},{id:1, description:'td2', done:true},{id:2, description:'td3', done:false} ];
+  var idToMark = 1;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:false},
+  {id:1, description:'td2', done:false},
+  {id:2, description:'td3', done:false} ],
+  "changed the done in the second object to false"
+)
+})
+
+QUnit.test("markTodoTest3", function(assert){
+  var markTodo = todo.todoFunctions.markTodo;
+  var todos = [{id:0, description:'td1', done:false},{id:1, description:'td2', done:true},{id:2, description:'td3', done:false} ];
+  var idToMark = 2;
+  assert.deepEqual(markTodo(todos, idToMark), [{id:0, description:'td1', done:false},
+  {id:1, description:'td2', done:true},
+  {id:2, description:'td3', done:true} ],
+  "changed the done in the third obbject to true"
+)
+})
