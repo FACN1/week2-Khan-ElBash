@@ -43,31 +43,13 @@ var todo = (function() {
       return todos.filter(idIsNotEqual);
     },
     markTodo: function(todos, idToMark) {
-      var map1 = [];
-      todos.map(function(todo){
-        if(todo.id == idToMark){
-          if(todo.done == true) {
-            todo.done = false;
-            map1.push(todo);
-            return todos;
-              }
-               else {
-                 if (todo.done == false){
-                  todo.done = true;
-                  map1.push(todo);
-                  return todos;
-              }
-             }
-            }
-             map1.push(todo);
-             return todos;
-          })
-          console.log(todos);
-          return map1;
-      // should leave the input argument todos unchanged
-      // in the new todo list, all elements will remain unchanged except the on with id: idToMark
-      // this element will have its id toggled
-      // hint: array.map
+
+      return todos.map(function(todo){
+        if (todo.id == idToMark){
+          todo.done = !todo.done;
+        }
+        return todo;
+      })
     },
     sortTodos: function(todos, sortFunction) {
       // stretch goal! Do this last
