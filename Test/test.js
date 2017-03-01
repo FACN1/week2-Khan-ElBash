@@ -1,23 +1,24 @@
-//addTodo tests
-
-QUnit.test("addTodo", function(assert){
+// tests for addTodo
+QUnit.test("addTodo test", function(assert){
   var addTodo = todo.todoFunctions.addTodo;
   var todos = [];
   var newTodo = { description: 'td2' };
 
- assert.deepEqual(addTodo(todos, newTodo),
-  [{id:0, description: 'td2'}],
-  "adds id")
-  assert.deepEqual(addTodo(todos, newTodo),
+  assert.deepEqual(
+    addTodo(todos, newTodo),
+    [{id:0, description: 'td2'}],
+    "adds id"
+  );
+  assert.deepEqual(
+    addTodo(todos, newTodo),
     [{id:1, description: 'td2'}],
     "adds id"
-  )
+  );
 
   todos = addTodo(todos, newTodo);
   todos = addTodo(todos, newTodo);
-   assert.notEqual(todos[0].id, todos[1].id,"ids should be different");
-
-})
+  assert.notEqual(todos[0].id, todos[1].id,"ids should be different");
+});
 
 // deleteTodo tests
 QUnit.test( "deleteTodo function test for deleting nothing", function( assert ) {
