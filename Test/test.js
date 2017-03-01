@@ -2,16 +2,16 @@
 QUnit.test("addTodo test", function(assert){
   var addTodo = todo.todoFunctions.addTodo;
   var todos = [];
-  var newTodo = { description: 'td2' };
+  var newTodo = { description: 'td2', done:false };
 
   assert.deepEqual(
     addTodo(todos, newTodo),
-    [{id:0, description: 'td2'}],
+    [{id:0, description: 'td2', done:false}],
     "adds id"
   );
   assert.deepEqual(
     addTodo(todos, newTodo),
-    [{id:1, description: 'td2'}],
+    [{id:1, description: 'td2', done:false}],
     "adds id"
   );
 
