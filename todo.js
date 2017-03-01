@@ -71,11 +71,14 @@ var todo = (function() {
   var controller = {
     createTodoNode: function(todoData) {
       var todoNode = document.createElement('li');
-      
+      console.log(todoData.done);
       // add span holding description
       var descriptionNode = document.createElement('span');
       descriptionNode.innerHTML = todoData.description;
-
+      
+      if (todoData.done == true){
+        descriptionNode.innerHTML += "  Done"
+      }
       // we want to add the descriptionNode to the todoNode
       todoNode.appendChild(descriptionNode);
 
@@ -90,11 +93,12 @@ var todo = (function() {
 
       // add markTodo button
         var markTodoButton = document.createElement('button');
-        markTodoButton.innerHTML ="DONE"
+        markTodoButton.innerHTML ="Done"
         markTodoButton.addEventListener('click', function(){
          state = todoFunctions.markTodo(state, todoData.id);
+         controller.render(state);
         })
-        
+
 
         todoNode.appendChild(markTodoButton);
 
