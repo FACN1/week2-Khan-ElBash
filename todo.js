@@ -117,7 +117,7 @@ var todo = (function() {
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
-  
+
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
@@ -130,19 +130,23 @@ var todo = (function() {
 
     // get the text from the input box and put it in inputDescription variable
     var inputDescription = event.target.description.value; // event.target ....
-
+    var inputText = document.getElementById("inputText").value;
     // we need to create a newTodo item with the correct structure
-    var newTodo = {
-      description: inputDescription
-    };
+    //this checks if the input is empty or filled with spaces which wont allow it
+    //to submit
+    if ( inputText.trim() !== ""){
+      var newTodo = {
+        description: inputDescription
+      };
+      state = todoFunctions.addTodo(state, newTodo);
+      controller.render(state);
+    }
 
+    document.getElementById("inputText").value = "";
     // we want to add a new todo item to the state
     // you should use todoFunctions.addTodo
-    state = todoFunctions.addTodo(state, newTodo);
 
-    controller.render(state);
   })
-
 
   controller.render(state);
 
