@@ -1,4 +1,4 @@
-// tests for addTodo
+// addTodo tests
 QUnit.test("addTodo test", function(assert){
   var addTodo = todo.todoFunctions.addTodo;
   var todos = [];
@@ -20,7 +20,7 @@ QUnit.test("addTodo test", function(assert){
   assert.notEqual(todos[0].id, todos[1].id,"ids should be different");
 });
 
-// deleteTodo tests
+// deleteTodo tests , delete todos
 QUnit.test( "deleteTodo function test for deleting nothing", function( assert ) {
   var deleteTodo = todo.todoFunctions.deleteTodo;
   var testTodos = [
@@ -61,8 +61,7 @@ QUnit.test( "test deleteTodo function deleting one todo item", function( assert 
   );
 });
 
-// markTodo tests
-
+// markTodo tests , change the done to true
 QUnit.test("markTodo", function(assert){
   var markTodo = todo.todoFunctions.markTodo;
   var todos = [{id:0, description:'td1', done:false}];
