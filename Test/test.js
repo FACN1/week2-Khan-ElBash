@@ -38,11 +38,8 @@ QUnit.test( "deleteTodo function test for deleting one item", function( assert )
   var testTodos = [
     {id: 2, description: "first todo", done: false}
   ];
-  assert.deepEqual(
-    deleteTodo(testTodos, 2),
-    [],
-    "Delete Elements with id=2"
-  );
+  var result = deleteTodo(testTodos, 2);
+  assert.equal(result.length, 0, "Delete Elements with id=2");
 });
 
 QUnit.test( "test deleteTodo function deleting one todo item", function( assert ) {
