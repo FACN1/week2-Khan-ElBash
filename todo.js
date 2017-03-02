@@ -70,7 +70,7 @@ var todo = (function() {
       descriptionNode.innerHTML = todoData.description;
 
       if (todoData.done == true){
-        descriptionNode.innerHTML += "  Done"
+        descriptionNode.innerHTML += " (done)"
       }
 
       todoNode.appendChild(descriptionNode);
@@ -85,7 +85,7 @@ var todo = (function() {
       todoNode.appendChild(deleteButtonNode);
         // adds a button which toggles the to-do if its done
         var markTodoButton = document.createElement('button');
-        markTodoButton.innerHTML ="Done"
+        markTodoButton.innerHTML ="Toggle Done"
         markTodoButton.addEventListener('click', function(){
          state = todoFunctions.markTodo(state, todoData.id);
          controller.render(state);
