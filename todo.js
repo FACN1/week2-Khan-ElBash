@@ -117,7 +117,7 @@ var todo = (function() {
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
-  
+
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
@@ -129,7 +129,9 @@ var todo = (function() {
     // what is inside event.target? the form
 
     // get the text from the input box and put it in inputDescription variable
-    var inputDescription = event.target.description.value; // event.target ....
+
+    var inputDescription = event.target.description &&
+      event.target.description.value; 
 
     // we need to create a newTodo item with the correct structure
     var newTodo = {
