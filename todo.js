@@ -19,11 +19,7 @@ var todo = (function() {
       }
     })(),
     addTodo: function (todos, newTodo) {
-      var newTodoCopy = {};
-      Object.keys(newTodo).forEach(function(key) {
-
-        newTodoCopy[key]=newTodo[key];
-      });
+      var newTodoCopy = helpers.shallowObjectCopy(newTodo);
       newTodoCopy.id = todoFunctions.generateId();
       newTodoCopy.done = false;
       return todos.concat(newTodoCopy)
@@ -51,6 +47,16 @@ var todo = (function() {
       // should leave the input arguement todos unchanged
       // sortFunction will have same signature as the sort function in array.sort
       // hint: array.slice, array.sort
+    }
+  }
+
+  var helpers = {
+    shallowObjectCopy: function (obj) {
+      var objCopy = {};
+      Object.keys(obj).forEach(function (key) {
+        objCopy[key] = obj[key];
+      });
+      return objCopy
     }
   }
 
@@ -137,3 +143,10 @@ var todo = (function() {
 
       return { todoFunctions }
       })();
+
+     controller.render(state);
+  
+     return { todoFunctions }
+
+     })();
+
