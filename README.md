@@ -1,5 +1,5 @@
 # week2-Khan-ElBash
-Khan ElBash week 2 project repository.
+Khan-ElBash week 2 project repository: Create a to-do list website
 
 ## Local Install Instructions
 - clone the repository
