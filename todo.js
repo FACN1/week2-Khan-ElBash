@@ -77,7 +77,7 @@ var todo = (function() {
       descriptionNode.innerHTML = todoData.description;
 
       if (todoData.done == true){
-        descriptionNode.innerHTML += "  Done"
+        descriptionNode.innerHTML += " (done)"
       }
       // we want to add the descriptionNode to the todoNode
       todoNode.appendChild(descriptionNode);
@@ -93,7 +93,7 @@ var todo = (function() {
 
       // add markTodo button
         var markTodoButton = document.createElement('button');
-        markTodoButton.innerHTML ="Done"
+        markTodoButton.innerHTML ="Toggle Done"
         markTodoButton.addEventListener('click', function(){
          state = todoFunctions.markTodo(state, todoData.id);
          controller.render(state);
@@ -117,7 +117,7 @@ var todo = (function() {
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
-  
+
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
