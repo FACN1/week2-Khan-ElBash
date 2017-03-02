@@ -1,8 +1,5 @@
 var todo = (function() {
 
-  // Part 1. Fill in any missing parts of the todoFunction object!
-  // you can access these on todo.todoFunctions
-  // For part one we expect you to use tdd
 
   // each of these functions takes an array todos
   // [todo]
@@ -12,6 +9,7 @@ var todo = (function() {
   //   description: /*the description of the todo item*/,
   //   done: /*true or false, indicates whether the todo is done*/
   // }
+  // example : { id : 0, description : Eat flafel, done:false}
 
   var todoFunctions = {
     generateId: (function() {
@@ -25,11 +23,6 @@ var todo = (function() {
       newTodoCopy.id = todoFunctions.generateId();
       newTodoCopy.done = false;
       return todos.concat(newTodoCopy)
-      //return arr;
-      // should leave the input argument todos unchanged
-      // return a new array, it should contain todos with the newTodo added to the end.
-      // add an id to the newTodo. You can use the generateId function to create an id.
-      // hint: array.concat
     },
     deleteTodo: function (todos, idToDelete) {
       // should leave the input argument todos unchanged
@@ -78,14 +71,14 @@ var todo = (function() {
     createTodoNode: function(todoData) {
       var todoNode = document.createElement('li');
 
-      // add span holding description
+      // this adds span holding description
       var descriptionNode = document.createElement('span');
       descriptionNode.innerHTML = todoData.description;
 
       if (todoData.done == true){
         descriptionNode.innerHTML += " (done)"
       }
-      // we want to add the descriptionNode to the todoNode
+
       todoNode.appendChild(descriptionNode);
 
       // this adds the delete button
@@ -96,8 +89,7 @@ var todo = (function() {
         controller.render(state);
       })
       todoNode.appendChild(deleteButtonNode);
-
-      // add markTodo button
+        // adds a button which toggles the to-do if its done
         var markTodoButton = document.createElement('button');
         markTodoButton.innerHTML ="Toggle Done"
         markTodoButton.addEventListener('click', function(){
@@ -106,9 +98,7 @@ var todo = (function() {
         })
 
 
-        todoNode.appendChild(markTodoButton);
-
-      // add classes for css
+      todoNode.appendChild(markTodoButton);
 
       return todoNode;
     },
@@ -119,7 +109,6 @@ var todo = (function() {
         todoListNode.appendChild(controller.createTodoNode(todoData))
       });
 
-      // you may want to add a class for css
       todoListWrapper.replaceChild(todoListNode, todoListWrapper.firstChild);
     }
   }
@@ -127,30 +116,37 @@ var todo = (function() {
   // bind create todo form
   var addTodoForm = document.getElementById('add-todo');
   addTodoForm.addEventListener('submit', function(event) {
-    console.log('submit!!!');
-    // https://developer.mozilla.org/en-US/docs/Web/Events/submit
+  console.log('submit!!!');
     // what does event.preventDefault do?
     // it stops the page from refreshing
-    event.preventDefault();
-    // what is inside event.target? the form
+  event.preventDefault();
 
     // get the text from the input box and put it in inputDescription variable
     var inputDescription = event.target.description.value; // event.target ....
+    var inputText = document.getElementById("inputText").value;
 
-    // we need to create a newTodo item with the correct structure
-    var newTodo = {
+    //this checks if the input is empty or filled with spaces which wont allow it
+    //to submit
+    if ( inputText.trim() !== ""){
+      var newTodo = {
       description: inputDescription
-    };
+      };
+      state = todoFunctions.addTodo(state, newTodo);
+      controller.render(state);
+      }
 
-    // we want to add a new todo item to the state
-    // you should use todoFunctions.addTodo
-    state = todoFunctions.addTodo(state, newTodo);
+      document.getElementById("inputText").value = "";
 
-    controller.render(state);
-  })
+      })
 
-  controller.render(state);
+      controller.render(state);
+
+      return { todoFunctions }
+      })();
+
+     controller.render(state);
   
-  return { todoFunctions }
+     return { todoFunctions }
 
-})();
+     })();
+
