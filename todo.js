@@ -21,11 +21,7 @@ var todo = (function() {
       }
     })(),
     addTodo: function (todos, newTodo) {
-      var newTodoCopy = {};
-      Object.keys(newTodo).forEach(function(key) {
-
-        newTodoCopy[key]=newTodo[key];
-      });
+      var newTodoCopy = helpers.shallowObjectCopy(newTodo);
       newTodoCopy.id = todoFunctions.generateId();
       newTodoCopy.done = false;
       return todos.concat(newTodoCopy)
@@ -61,6 +57,16 @@ var todo = (function() {
     }
   }
 
+  var helpers = {
+    shallowObjectCopy: function (obj) {
+      var objCopy = {};
+      Object.keys(obj).forEach(function (key) {
+        objCopy[key] = obj[key];
+      });
+      return objCopy
+    }
+  }
+
   // part 2. the Dom
   var state = [
     { id: -3, description: 'first todo', done:false},
@@ -77,7 +83,7 @@ var todo = (function() {
       descriptionNode.innerHTML = todoData.description;
 
       if (todoData.done == true){
-        descriptionNode.innerHTML += "  Done"
+        descriptionNode.innerHTML += " (done)"
       }
       // we want to add the descriptionNode to the todoNode
       todoNode.appendChild(descriptionNode);
@@ -93,7 +99,7 @@ var todo = (function() {
 
       // add markTodo button
         var markTodoButton = document.createElement('button');
-        markTodoButton.innerHTML ="Done"
+        markTodoButton.innerHTML ="Toggle Done"
         markTodoButton.addEventListener('click', function(){
          state = todoFunctions.markTodo(state, todoData.id);
          controller.render(state);
@@ -145,8 +151,8 @@ var todo = (function() {
     controller.render(state);
   })
 
-
   controller.render(state);
-
+  
   return { todoFunctions }
+
 })();
